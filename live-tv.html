@@ -4,52 +4,33 @@
   <meta charset="UTF-8">
   <title>HU-LYNX — Live TV</title>
 
-  <!-- MOBILE RESPONSIVE -->
+  <!-- RESPONSIVE -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- FONTS -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
 
-  <!-- CSS -->
-  <link rel="stylesheet" href="assets/css/live-tv.css">
+  <!-- DESKTOP CSS -->
+  <link rel="stylesheet" href="assets/css/live-tv-desktop.css">
+
+  <!-- MOBILE CSS -->
+  <link rel="stylesheet" href="assets/css/live-tv-mobile.css">
 </head>
 
 <body>
 
 <!-- MOBILE NAVBAR -->
 <div class="mobile-nav">
-  <a href="index.html">
-    <img src="assets/icons/home.png" alt="">
-    <span>Home</span>
-  </a>
-
-  <a href="live-tv.html">
-    <img src="assets/icons/live.png" alt="">
-    <span>Live TV</span>
-  </a>
-
-  <a href="pays.html">
-    <img src="assets/icons/world.png" alt="">
-    <span>Pays</span>
-  </a>
-
-  <a href="categories.html">
-    <img src="assets/icons/category.png" alt="">
-    <span>Categories</span>
-  </a>
-
-  <a href="radio.html">
-    <img src="assets/icons/radio.png" alt="">
-    <span>Radio</span>
-  </a>
+  <a href="index.html"><img src="assets/icons/home.png"><span>Home</span></a>
+  <a href="live-tv.html"><img src="assets/icons/live.png"><span>Live TV</span></a>
+  <a href="pays.html"><img src="assets/icons/world.png"><span>Pays</span></a>
+  <a href="categories.html"><img src="assets/icons/category.png"><span>Categories</span></a>
+  <a href="radio.html"><img src="assets/icons/radio.png"><span>Radio</span></a>
 </div>
 
 <!-- DESKTOP NAVBAR -->
 <header class="navbar">
-  <div class="logo">
-    <img src="assets/logo.png" alt="HU-LYNX Logo">
-  </div>
-
+  <div class="logo"><img src="assets/logo.png"></div>
   <nav class="nav-links">
     <a href="index.html">Home</a>
     <a href="live-tv.html" class="active">Live TV</a>
@@ -66,38 +47,35 @@
   <p>Watch live channels from all around the world</p>
 </section>
 
-<!-- LIVE TV GRID -->
+<!-- TV GRID -->
 <section class="tv-grid">
 
-  <!-- EXAMPLE CHANNEL -->
   <div class="channel-card" onclick="openChannel('https://example.com/channel1')">
-    <img src="assets/channels/channel1.png" alt="">
+    <img src="assets/channels/channel1.png">
     <h3>Channel 1</h3>
   </div>
 
   <div class="channel-card" onclick="openChannel('https://example.com/channel2')">
-    <img src="assets/channels/channel2.png" alt="">
+    <img src="assets/channels/channel2.png">
     <h3>Channel 2</h3>
   </div>
 
   <div class="channel-card" onclick="openChannel('https://example.com/channel3')">
-    <img src="assets/channels/channel3.png" alt="">
+    <img src="assets/channels/channel3.png">
     <h3>Channel 3</h3>
   </div>
 
   <div class="channel-card" onclick="openChannel('https://example.com/channel4')">
-    <img src="assets/channels/channel4.png" alt="">
+    <img src="assets/channels/channel4.png">
     <h3>Channel 4</h3>
   </div>
 
 </section>
 
-<!-- FOOTER -->
 <footer class="footer">
   © 2026 HU‑LYNX — Worldwide Streaming Platform
 </footer>
 
-<!-- JS -->
 <script>
   function openChannel(url) {
     window.location.href = url;
