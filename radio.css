@@ -1,0 +1,258 @@
+body {
+  margin: 0;
+  background: url('assets/images/background.png') center/cover no-repeat fixed;
+  font-family: 'Inter', sans-serif;
+  color: white;
+}
+
+/* NAVBAR FIXED */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 18px;
+  background: rgba(5, 6, 10, 0.85);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 20;
+  height: 58px;
+  backdrop-filter: blur(10px);
+}
+
+.logo img {
+  height: 42px;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.nav-links a,
+.nav-links button {
+  flex-shrink: 0;
+}
+
+.nav-links a {
+  color: #FFFFFF;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.nav-links a.active {
+  color: #F5C451;
+  font-weight: 700;
+}
+
+.nav-links button {
+  padding: 6px 14px;
+  font-size: 14px;
+  border-radius: 30px;
+  background: #F5C451;
+  color: #05060A;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+}
+
+/* PAGE LAYOUT */
+.page {
+  display: flex;
+  height: calc(100vh - 58px);
+  margin-top: 58px;
+}
+
+/* SIDEBAR */
+.sidebar {
+  width: 280px;
+  background: rgba(10, 12, 18, 0.85);
+  padding: 0;
+  border-right: 2px solid #1f2229;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* FIXED HEADER */
+.sidebar-header {
+  padding: 20px;
+  background: rgba(10, 12, 18, 0.95);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+/* SEARCH BAR */
+.search-bar input {
+  width: 85%;
+  max-width: 200px;
+  padding: 8px;
+  font-size: 13px;
+  border-radius: 6px;
+  border: none;
+  background: #1f2229;
+  color: white;
+  margin-bottom: 12px;
+}
+
+/* ALL STATIONS BUTTON */
+#all-stations-btn {
+  width: 100%;
+  padding: 10px;
+  background: #ffffff22;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+#all-stations-btn:hover {
+  background: #ffffff44;
+}
+
+/* STATION LIST */
+.station-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px;
+}
+
+/* MAIN CONTENT */
+.content {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+/* FIXED PLAYER */
+.radio-top-player {
+  background: rgba(10, 12, 18, 0.85);
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid #1f2229;
+  position: sticky;
+  top: 0;
+  z-index: 15;
+}
+
+.player-controls {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.player-controls button {
+  background: #F5C451;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.player-controls button:hover {
+  background: #ffdd88;
+}
+
+/* GRID */
+.grid-title {
+  margin-top: 20px;
+  font-size: 22px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 16px;
+}
+
+.station-tile {
+  background: #1f2229;
+  padding: 10px;
+  border-radius: 8px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.station-tile img {
+  width: 100%;
+  height: 90px;
+  object-fit: contain;
+}
+
+.station-tile:hover {
+  background: #2a2d35;
+}
+
+/* FOOTER */
+.footer {
+  padding: 20px;
+  text-align: center;
+  background: rgba(5, 6, 10, 0.85);
+  font-size: 14px;
+}
+
+/* FIXED BOTTOM LEFT PLAYER */
+.radio-bottom-player {
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+  width: 260px;
+  background: rgba(10, 12, 18, 0.95);
+  padding: 12px;
+  border-radius: 10px;
+  border: 2px solid #1f2229;
+  z-index: 50;
+}
+
+.radio-bottom-player h4 {
+  margin: 0 0 6px 0;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.radio-bottom-player audio {
+  width: 100%;
+}
+
+.player-controls {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.player-controls button {
+  background: #F5C451;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.player-controls button:hover {
+  background: #ffdd88;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: calc(100% - 140px); /* FIX DEFINITIF */
+}
+
+.nav-links a,
+.nav-links button {
+  flex-shrink: 0; /* Pa retresi */
+}

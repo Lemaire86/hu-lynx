@@ -1,0 +1,354 @@
+body {
+  margin: 0;
+  background: url('assets/images/background.png') center/cover no-repeat fixed;
+  font-family: 'Inter', sans-serif;
+  color: white;
+}
+
+/* NAVBAR */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 18px;
+  background: rgba(5, 6, 10, 0.85);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 20;
+  height: 58px;
+  backdrop-filter: blur(10px);
+}
+
+.logo img {
+  height: 42px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  max-width: calc(100% - 120px);
+}
+
+.nav-links a {
+  color: #FFFFFF;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.nav-links a.active {
+  color: #F5C451;
+  font-weight: 700;
+}
+
+.nav-links button {
+  padding: 6px 14px;
+  font-size: 14px;
+  border-radius: 30px;
+  background: #F5C451;
+  color: #05060A;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+}
+
+/* PAGE LAYOUT */
+.page {
+  display: flex;
+  height: calc(100vh - 58px);
+  margin-top: 58px;
+}
+
+/* SIDEBAR */
+.sidebar {
+  width: 280px;
+  background: rgba(10, 12, 18, 0.85);
+  padding: 20px;
+  overflow-y: auto;
+  border-right: 2px solid #1f2229;
+}
+
+.sidebar-title {
+  margin: 0 0 20px 0;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.search-global {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+#search-global-input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 6px;
+  border: none;
+  background: #1f2229;
+  color: white;
+}
+
+#all-channels-btn {
+  margin-top: 10px;
+  width: 100%;
+  padding: 10px;
+  background: #ffffff22;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+}
+
+#all-channels-btn:hover {
+  background: #ffffff44;
+}
+
+#search-suggestions {
+  position: absolute;
+  top: 42px;
+  left: 0;
+  width: 100%;
+  background: #1f2229;
+  border-radius: 6px;
+  display: none;
+  z-index: 10;
+}
+
+.suggestion-item {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.suggestion-item:hover {
+  background: #2a2d35;
+}
+
+.list {
+  margin-top: 10px;
+}
+
+.country-item {
+  padding: 10px;
+  cursor: pointer;
+  border-bottom: 1px solid #1f2229;
+}
+
+.country-item:hover {
+  background: #1f2229;
+}
+
+/* MAIN CONTENT */
+.content {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+#country-title {
+  margin: 0 0 20px 0;
+  font-size: 26px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 16px;
+}
+
+.channel-tile {
+  background: #1f2229;
+  padding: 10px;
+  border-radius: 8px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.channel-tile img {
+  width: 100%;
+  height: 90px;
+  object-fit: contain;
+}
+
+.channel-tile:hover {
+  background: #2a2d35;
+}
+
+/* FOOTER */
+.footer {
+  padding: 20px;
+  text-align: center;
+  background: rgba(5, 6, 10, 0.85);
+  font-size: 14px;
+}
+
+/* SIDEBAR */
+.sidebar {
+  width: 280px;
+  background: rgba(10, 12, 18, 0.85);
+  padding: 0;
+  border-right: 2px solid #1f2229;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; /* 🔥 retire slide */
+}
+
+/* FIXED HEADER */
+.sidebar-header {
+  padding: 20px;
+  background: rgba(10, 12, 18, 0.95);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+/* SEARCH BAR REDUIT + ALIGNE */
+.search-bar {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.search-bar input {
+  width: 85%;          /* 🔥 Redui search bar */
+  max-width: 200px;    /* 🔥 Pa depase sidebar */
+  padding: 8px;
+  font-size: 13px;
+  border-radius: 6px;
+  border: none;
+  background: #1f2229;
+  color: white;
+  margin-bottom: 12px;
+}
+
+/* ALL CHANNELS BUTTON */
+#all-channels-btn {
+  width: 100%;
+  padding: 10px;
+  background: #ffffff22;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+#all-channels-btn:hover {
+  background: #ffffff44;
+}
+
+/* SCROLLABLE LIST */
+.list {
+  flex: 1;
+  overflow-y: auto; /* 🔥 Se sèlman lis PAYS yo ki scrolle */
+  padding: 20px;
+}
+
+/* COUNTRY ITEM */
+.country-item {
+  padding: 10px;
+  cursor: pointer;
+  border-bottom: 1px solid #1f2229;
+}
+
+.country-item:hover {
+  background: #1f2229;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+
+  /* FIXES */
+  flex-wrap: nowrap;          /* Pa kite yo ale sou 2 liy */
+  white-space: nowrap;        /* Pa kite tèks kraze */
+  max-width: calc(100% - 140px); /* Rete nan ekran an */
+  overflow: hidden;           /* Pa kite depase */
+}
+
+.nav-links a {
+  flex-shrink: 0;             /* Pa retresi lyen yo */
+}
+
+.nav-links button {
+  flex-shrink: 0;             /* Bouton Sign In pa retresi */
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  max-width: calc(100% - 140px);
+  overflow: hidden;
+}
+
+.nav-links a,
+.nav-links button {
+  flex-shrink: 0;
+}
+
+/* NAVBAR */
+.navbar {
+  display: flex;
+  justify-content: space-between; /* Logo ←→ Links */
+  align-items: center;
+  padding: 4px 18px;
+  background: rgba(5, 6, 10, 0.85);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 20;
+  height: 58px;
+  backdrop-filter: blur(10px);
+  box-sizing: border-box;
+}
+
+.logo img {
+  height: 42px;
+}
+
+/* NAV-LINKS FIXED, NON-BREAKING */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+
+  flex-wrap: nowrap;       /* Pa janm ale sou 2 liy */
+  white-space: nowrap;     /* Pa kraze tèks */
+  overflow: hidden;        /* Pa kite depase */
+}
+
+/* LINKS */
+.nav-links a {
+  color: #FFFFFF;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  flex-shrink: 0;          /* Pa retresi */
+}
+
+/* ACTIVE LINK */
+.nav-links a.active {
+  color: #F5C451;
+  font-weight: 700;
+}
+
+/* SIGN IN BUTTON */
+.nav-links button {
+  padding: 6px 14px;
+  font-size: 14px;
+  border-radius: 30px;
+  background: #F5C451;
+  color: #05060A;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  flex-shrink: 0;          /* Pa retresi */
+}

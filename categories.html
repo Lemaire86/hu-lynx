@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>HU‑LYNX — Categories</title>
+  <link rel="stylesheet" href="categories.css">
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<header class="navbar">
+  <div class="logo">
+    <img src="assets/logo.png" alt="HU-LYNX Logo">
+  </div>
+
+  <nav class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="live-tv.html">Live TV</a>
+    <a href="pays.html">Pays</a>
+    <a href="categories.html" class="active">Categories</a>
+    <a href="radio.html">Radio</a>
+    <button>Sign In</button>
+  </nav>
+</header>
+
+<div class="page">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <h2 class="sidebar-title">CATEGORIES</h2>
+
+    <div class="search-global">
+      <input type="text" id="search-global-input" placeholder="Search...">
+      <button id="all-channels-btn">ALL CHANNELS</button>
+      <div id="search-suggestions"></div>
+    </div>
+
+    <div id="categories-list" class="list"></div>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="content">
+    <h2 id="category-title">ALL CHANNELS</h2>
+    <div id="channels-grid" class="grid"></div>
+  </main>
+
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  © 2026 HU‑LYNX — Worldwide Streaming Platform
+</footer>
+
+<script src="categories.js"></script>
+
+</body>
+</html>
