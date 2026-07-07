@@ -3,225 +3,49 @@
 <head>
   <meta charset="UTF-8">
   <title>HU-LYNX — Worldwide Streaming Platform</title>
+
+  <!-- MOBILE RESPONSIVE -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- FONTS -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
 
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Inter', sans-serif;
-      background: url('assets/images/background.png') center/cover no-repeat;
-      color: #FFFFFF;
-      overflow-x: hidden;
-    }
+  <!-- EXTERNAL CSS -->
+  <link rel="stylesheet" href="assets/css/index.css">
 
-    /* NAVBAR */
-    .navbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 4px 18px;
-      background: rgba(5, 6, 10, 0.85);
-      position: fixed;
-      width: 100%;
-      top: 0;
-      z-index: 20;
-      backdrop-filter: blur(10px);
-      height: 58px;
-      box-sizing: border-box;
-    }
-
-    .logo img {
-      height: 42px;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 18px;
-      align-items: center;
-      flex-wrap: nowrap;
-      white-space: nowrap;
-      max-width: calc(100% - 120px);
-      overflow: hidden;
-    }
-
-    .nav-links a {
-      color: #FFFFFF;
-      text-decoration: none;
-      font-size: 14px;
-      font-weight: 500;
-    }
-
-    /* ACTIVE LINK FIX */
-    .nav-links a.active {
-      color: #F5C451;
-      font-weight: 700;
-    }
-
-    .nav-links button {
-      padding: 6px 14px;
-      font-size: 14px;
-      border-radius: 30px;
-      background: #F5C451;
-      color: #05060A;
-      font-weight: 600;
-      border: none;
-      cursor: pointer;
-    }
-
-    /* HERO SECTION */
-    .hero {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      min-height: 100vh;
-      padding: 0 60px;
-      padding-top: 220px;
-      position: relative;
-    }
-
-    .hero-left {
-      max-width: 600px;
-      z-index: 3;
-      margin-top: -20px;
-    }
-
-    .hero-left h1 {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 58px;
-      font-weight: 700;
-      margin-bottom: 20px;
-      line-height: 1.2;
-    }
-
-    .cursor {
-      display: inline-block;
-      color: #F5C451;
-      font-weight: 700;
-      animation: blinkCursor 0.7s steps(1) infinite;
-    }
-
-    @keyframes blinkCursor {
-      0% { opacity: 1; }
-      50% { opacity: 0; }
-      100% { opacity: 1; }
-    }
-
-    .hero-left p {
-      font-size: 20px;
-      line-height: 1.6;
-      margin-bottom: 32px;
-    }
-
-    .btn-big {
-      padding: 18px 40px;
-      font-size: 20px;
-      border-radius: 50px;
-      font-weight: 700;
-      cursor: pointer;
-      border: none;
-    }
-
-    .btn-primary {
-      background: #F5C451;
-      color: #05060A;
-    }
-
-    .btn-secondary {
-      background: #1F6FEB;
-      color: #FFFFFF;
-    }
-
-    .hero-buttons {
-      display: flex;
-      gap: 18px;
-    }
-
-    .hero-right {
-      position: relative;
-      width: 650px;
-      text-align: center;
-      z-index: 3;
-      margin-top: 20px;
-    }
-
-    .hero-right img.logo {
-      width: 600px;
-      position: relative;
-      z-index: 3;
-      margin-top: 140px;
-    }
-
-    @keyframes floatHead {
-      0% { transform: translate(-50%, -8px); }
-      50% { transform: translate(-50%, 8px); }
-      100% { transform: translate(-50%, -8px); }
-    }
-
-    .hero-right img.head {
-      width: 480px;
-      position: absolute;
-      top: -140px;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 2;
-      opacity: 0.95;
-      animation: floatHead 4s ease-in-out infinite;
-    }
-
-    .fx-globe {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      opacity: 0.8;
-      z-index: 1;
-    }
-
-    .hero-text {
-      text-align: center;
-      margin-top: -10px;
-      font-family: 'Montserrat', sans-serif;
-      z-index: 3;
-      width: 100%;
-      line-height: 1.4;
-    }
-
-    .hero-text h3 {
-      font-size: 26px;
-      letter-spacing: 3px;
-      font-weight: 700;
-      color: #F5C451;
-      margin-bottom: 8px;
-    }
-
-    .hero-text p {
-      font-size: 22px;
-      font-weight: 600;
-      letter-spacing: 2px;
-      color: #FFFFFF;
-      margin-bottom: 6px;
-    }
-
-    .hero-text small {
-      font-size: 18px;
-      color: #A9A9A9;
-      letter-spacing: 2px;
-      display: block;
-      margin-top: 4px;
-    }
-
-    .footer {
-      padding: 40px;
-      text-align: center;
-      background: #05060A;
-      opacity: 0.8;
-      font-size: 14px;
-    }
-  </style>
 </head>
 
 <body>
 
+<!-- MOBILE NAVBAR -->
+<div class="mobile-nav">
+  <a href="index.html">
+    <img src="assets/icons/home.png" alt="">
+    <span>Home</span>
+  </a>
+
+  <a href="live-tv.html">
+    <img src="assets/icons/live.png" alt="">
+    <span>Live TV</span>
+  </a>
+
+  <a href="pays.html">
+    <img src="assets/icons/world.png" alt="">
+    <span>Pays</span>
+  </a>
+
+  <a href="categories.html">
+    <img src="assets/icons/category.png" alt="">
+    <span>Categories</span>
+  </a>
+
+  <a href="radio.html">
+    <img src="assets/icons/radio.png" alt="">
+    <span>Radio</span>
+  </a>
+</div>
+
+<!-- DESKTOP NAVBAR -->
 <header class="navbar">
   <div class="logo">
     <img src="assets/logo.png" alt="HU-LYNX Logo">
@@ -237,6 +61,7 @@
   </nav>
 </header>
 
+<!-- HERO SECTION -->
 <section class="hero">
   <div class="hero-left">
     <h1>
@@ -271,6 +96,7 @@
   <img src="assets/images/fx_globe.png" alt="FX Globe" class="fx-globe">
 </section>
 
+<!-- FOOTER -->
 <footer class="footer">
   © 2026 HU‑LYNX — Worldwide Streaming Platform
 </footer>
@@ -304,11 +130,10 @@
   typeLive();
 </script>
 
-<!-- ACTIVE NAVBAR SCRIPT (FINAL FIX) -->
+<!-- ACTIVE NAVBAR SCRIPT -->
 <script>
   let currentPage = window.location.pathname.split("/").pop();
 
-  // Fix for home page opened as "/" or empty
   if (currentPage === "" || currentPage === "/") {
     currentPage = "index.html";
   }

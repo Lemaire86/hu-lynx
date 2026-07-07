@@ -256,3 +256,144 @@ body {
 .nav-links button {
   flex-shrink: 0; /* Pa retresi */
 }
+
+/* FIX: nav-links pa dwe depase */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: nowrap;        /* IMPORTANT */
+  white-space: nowrap;      /* IMPORTANT */
+  max-width: calc(100% - 120px); /* evite depase */
+  overflow: hidden;         /* evite koupe layout */
+}
+
+.nav-links a {
+  color: #FFFFFF;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.nav-links a.active {
+  color: #F5C451;
+  font-weight: 700;
+}
+
+/* NAVBAR FIXED */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 16px;
+  background: rgba(5, 6, 10, 0.85);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 20;
+  height: 58px;
+  backdrop-filter: blur(10px);
+  box-sizing: border-box;
+}
+
+.logo img {
+  height: 40px;
+}
+
+/* FIX DEFINITIF: nav-links pa depase */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: calc(100% - 140px); /* 140px = espas pou logo + Sign In */
+  box-sizing: border-box;
+}
+
+.nav-links a,
+.nav-links button {
+  flex-shrink: 0; /* Pa retresi */
+}
+
+.nav-links a {
+  color: #FFFFFF;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.nav-links a.active {
+  color: #F5C451;
+  font-weight: 700;
+}
+
+.nav-links button {
+  padding: 6px 14px;
+  font-size: 14px;
+  border-radius: 30px;
+  background: #F5C451;
+  color: #05060A;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.radio-bottom-player {
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+  width: 280px;              /* MENM LAJÈ AK SIDEBAR */
+  background: rgba(10, 12, 18, 0.95);
+  padding: 12px;
+  border-radius: 10px;
+  border: 2px solid #1f2229;
+  z-index: 50;
+  box-sizing: border-box;    /* EVITE DEPASE */
+}
+
+.radio-bottom-player audio {
+  width: 100%;               /* pran tout espas */
+  max-width: 100%;           /* pa depase */
+  display: block;
+}
+
+.player-controls button {
+  padding: 6px 10px;
+  font-size: 13px;
+}
+
+/* FIX: Radio player pa dwe depase sidebar la */
+.radio-bottom-player {
+  position: fixed;
+  bottom: 10px;
+  left: 10px;               /* menm distans ak sidebar la */
+  width: 280px;             /* MENM LAJÈ AK SIDEBAR */
+  max-width: 280px;         /* GARANTI PA DEPASE */
+  background: rgba(10, 12, 18, 0.95);
+  padding: 12px;
+  border-radius: 10px;
+  border: 2px solid #1f2229;
+  z-index: 50;
+  box-sizing: border-box;   /* evite depase ak padding */
+  overflow: hidden;         /* si gen bagay ki ta depase, koupe yo */
+}
+
+.radio-bottom-player audio {
+  width: 100%;
+  max-width: 100%;
+  display: block;
+}
+
+.sidebar {
+  width: 280px;
+  padding-left: 10px;
+}
+
+.radio-bottom-player {
+  left: 10px;
+}
+
+

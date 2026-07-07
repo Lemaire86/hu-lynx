@@ -1,16 +1,46 @@
 /* ---------------- PLAYLISTS ---------------- */
 const playlists = [
+  "https://iptv-org.github.io/iptv/countries/fr.m3u",
+  "https://ip-tv.app/France",
+
+  /* Playlist Haiti ou a */
+  "https://raw.githubusercontent.com/Lemaire86/Le-Maire-TV/refs/heads/main/CODE%20IPTV/lmtv.m3u",
+
+  "https://ip-tv.app/Haiti",
+  "https://iptv-org.github.io/iptv/countries/ht.m3u",
+
+  "https://ip-tv.app/USA",
+  "https://ip-tv.app/Sports",
   "https://iptv-org.github.io/iptv/index.m3u",
   "https://raw.githubusercontent.com/ipstreet312/freeiptv/master/all.m3u",
-  "https://raw.githubusercontent.com/Free-TV/IPTV/master/playlist.m3u8",
-  "https://raw.githubusercontent.com/Lemaire86/Le-Maire-TV/refs/heads/main/CODE%20IPTV/lmtv.m3u",
-  // Playlist Haiti espesyal
-  "https://raw.githubusercontent.com/hello-earth/available_iptv-address_in_china/refs/heads/master/channels/available_iptv_address_Haiti.txt"
+  "https://raw.githubusercontent.com/Free-TV/IPTV/master/playlist.m3u8"
 ];
 
+/* ---------------- GLOBALS ---------------- */
 let channels = [];
-let filteredChannels = [];
 let currentIndex = 0;
+
+/* ---------------- CATEGORIES KI PI ENPÒTAN YO ---------------- */
+const importantCategories = [
+  "Movies",
+  "Series",
+  "Kids",
+  "Cartoons",
+  "Anime",
+  "News",
+  "World News",
+  "Local News",
+  "Music",
+  "Radio Music",
+  "Hits",
+  "Sports",
+  "Live Sports",
+  "Football",
+  "Basketball",
+  "General",
+  "Lifestyle",
+  "Documentary"
+];
 
 /* ---------------- LOAD PLAYLISTS ---------------- */
 async function loadPlaylists() {
@@ -19,39 +49,52 @@ async function loadPlaylists() {
       const res = await fetch(url);
       const text = await res.text();
 
-      // Si fichye a se .txt (Haiti), itilize parseHaiti()
-      if (url.endsWith(".txt")) {
-        parseHaiti(text);
+      /* Playlist Haiti ou a → fòse kategori Haiti */
+      if (url.includes("Lemaire86/Le-Maire-TV")) {
+        parseM3U(text, "Haiti");
       } else {
         parseM3U(text);
       }
+
     } catch (e) {
-      console.log("Erreur playlist:", url);
+      console.log("Error loading playlist:", url);
     }
   }
 
-  filteredChannels = channels;
-  renderChannelList();
+  fillCategories();   // ← RANPLI CATEGORIES YO
+  renderChannels();   // ← Afiche lis chèn yo
+  if (channels.length > 0) loadChannel(0);
 }
 
 /* ---------------- PARSE M3U ---------------- */
-function parseM3U(text) {
+function parseM3U(text, forceCategory = null) {
   const lines = text.split("\n");
-  let name = "", logo = "", category = "", country = "";
+  let name = "";
+  let logo = "";
+  let category = "";
+  let country = "";
 
   lines.forEach(line => {
+
     if (line.startsWith("#EXTINF")) {
+
       const info = line.split(",");
       name = info[1] || "Unknown";
 
-      const logoMatch = line.match(/tvg-logo="(.*?)"/);
-      logo = logoMatch ? logoMatch[1] : "assets/logo.png";
+      const tvgLogoMatch = line.match(/tvg-logo="(.*?)"/);
+      logo = tvgLogoMatch ? tvgLogoMatch[1] : "assets/logo.png";
 
-      const catMatch = line.match(/group-title="(.*?)"/);
-      category = catMatch ? catMatch[1] : "General";
+      const groupMatch = line.match(/group-title="(.*?)"/);
+      category = groupMatch ? groupMatch[1] : "General";
 
       const countryMatch = line.match(/country="(.*?)"/);
       country = countryMatch ? countryMatch[1] : "Unknown";
+
+      /* FÒSE KATEGORI HAITI */
+      if (forceCategory) {
+        category = forceCategory;
+        country = forceCategory;
+      }
     }
 
     if (line.startsWith("http")) {
@@ -66,46 +109,58 @@ function parseM3U(text) {
   });
 }
 
-/* ---------------- PARSE HAITI TXT ---------------- */
-function parseHaiti(text) {
-  const lines = text.split("\n").filter(line => line.trim() !== "" && !line.startsWith("#"));
-  lines.forEach(line => {
-    const parts = line.split(",");
-    if (parts.length >= 2) {
-      const name = parts[0].trim();
-      const url = parts[1].trim();
-      channels.push({
-        name,
-        logo: "assets/tv/default.png",
-        url,
-        category: "Haiti",
-        country: "Haiti"
-      });
-    }
+/* ---------------- FILL IMPORTANT CATEGORIES ---------------- */
+function fillCategories() {
+  const select = document.getElementById("filter-category");
+
+  select.innerHTML = `<option value="">Categories</option>`;
+
+  importantCategories.forEach(cat => {
+    select.innerHTML += `<option value="${cat}">${cat}</option>`;
   });
 }
 
-/* ---------------- RENDER CHANNEL LIST ---------------- */
-function renderChannelList() {
+/* ---------------- RENDER CHANNELS ---------------- */
+function renderChannels() {
   const list = document.getElementById("channel-list");
   list.innerHTML = "";
 
-  filteredChannels.forEach((ch, index) => {
+  const search = document.getElementById("search-input").value.toLowerCase();
+  const filterCat = document.getElementById("filter-category").value;
+  const filterCountry = document.getElementById("filter-country").value;
+
+  channels.forEach((ch, index) => {
+
+    if (search && !ch.name.toLowerCase().includes(search)) return;
+
+    if (filterCat && ch.category !== filterCat) return;
+
+    if (filterCountry && ch.country !== filterCountry) return;
+
     const item = document.createElement("div");
     item.className = "channel-item";
-    item.innerHTML = `
-      <img src="${ch.logo}">
-      <span>${ch.name}</span>
+    item.onclick = () => loadChannel(index);
+
+    const logo = document.createElement("img");
+    logo.src = ch.logo;
+
+    const info = document.createElement("div");
+    info.className = "channel-info";
+    info.innerHTML = `
+      <h4>${ch.name}</h4>
+      <small>${ch.category} • ${ch.country}</small>
     `;
-    item.onclick = () => playChannel(index);
+
+    item.appendChild(logo);
+    item.appendChild(info);
     list.appendChild(item);
   });
 }
 
-/* ---------------- PLAY CHANNEL ---------------- */
-function playChannel(index) {
+/* ---------------- LOAD CHANNEL ---------------- */
+function loadChannel(index) {
   currentIndex = index;
-  const ch = filteredChannels[index];
+  const ch = channels[index];
 
   document.getElementById("current-logo").src = ch.logo;
   document.getElementById("current-name").textContent = ch.name;
@@ -114,40 +169,24 @@ function playChannel(index) {
 
   const player = document.getElementById("tv-player");
   player.src = ch.url;
-  player.play();
+  player.play().catch(() => {});
 }
 
-/* ---------------- NEXT / PREVIOUS ---------------- */
-document.getElementById("btn-next").onclick = () => {
-  currentIndex = (currentIndex + 1) % filteredChannels.length;
-  playChannel(currentIndex);
-};
-
+/* ---------------- BUTTONS ---------------- */
 document.getElementById("btn-prev").onclick = () => {
-  currentIndex = (currentIndex - 1 + filteredChannels.length) % filteredChannels.length;
-  playChannel(currentIndex);
+  currentIndex = (currentIndex - 1 + channels.length) % channels.length;
+  loadChannel(currentIndex);
 };
 
-/* ---------------- SEARCH ---------------- */
-document.getElementById("search-input").oninput = function () {
-  const q = this.value.toLowerCase();
-  filteredChannels = channels.filter(ch => ch.name.toLowerCase().includes(q));
-  renderChannelList();
+document.getElementById("btn-next").onclick = () => {
+  currentIndex = (currentIndex + 1) % channels.length;
+  loadChannel(currentIndex);
 };
 
-/* ---------------- FILTER COUNTRY ---------------- */
-document.getElementById("filter-country").onchange = function () {
-  const val = this.value;
-  filteredChannels = val ? channels.filter(ch => ch.country === val) : channels;
-  renderChannelList();
-};
-
-/* ---------------- FILTER CATEGORY ---------------- */
-document.getElementById("filter-category").onchange = function () {
-  const val = this.value;
-  filteredChannels = val ? channels.filter(ch => ch.category === val) : channels;
-  renderChannelList();
-};
+/* ---------------- FILTER EVENTS ---------------- */
+document.getElementById("search-input").oninput = renderChannels;
+document.getElementById("filter-category").onchange = renderChannels;
+document.getElementById("filter-country").onchange = renderChannels;
 
 /* ---------------- START ---------------- */
 loadPlaylists();
