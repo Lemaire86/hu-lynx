@@ -28,14 +28,17 @@
 
   <!-- SIDEBAR -->
   <aside class="sidebar">
+
     <div class="sidebar-header">
       <div class="search-bar">
         <input type="text" id="search-radio" placeholder="Search station...">
       </div>
+
       <button id="all-stations-btn">ALL STATIONS</button>
     </div>
 
     <div class="station-list" id="station-list"></div>
+
   </aside>
 
   <!-- MAIN CONTENT -->
@@ -64,10 +67,6 @@
   © 2026 HU‑LYNX — Worldwide Streaming Platform
 </footer>
 
-<!-- HLS.js pou m3u8 -->
-<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
-
-<!-- Radio logic -->
 <script src="radio.js"></script>
 
 <script>
@@ -79,6 +78,7 @@
     if (link.dataset.page === currentPage) link.classList.add("active");
   });
 </script>
+<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
 
 </body>
 </html>
